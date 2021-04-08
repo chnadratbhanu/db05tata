@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  - let mangoes=[{Mangoname:"Amarapali",type:"green",price:70},{Mangoname:"Alphonso",type:"yellow",price:90},{Mangoname:"keitt",type:"light green",price:60}]
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each mango,index in mangoes
+        div(class="col-sm-4 m-1 p-3" style=("font-weight:bolder")  onclick=`buy(${index})`) #{mango.Mangoname} - #{mango.type} - #{mango.price} 
+  script.
+     
+         function buy(itemNo)
+        {
+        alert(`You purchased Item ${itemNo+1}`)
+        }
+  
