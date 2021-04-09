@@ -1,3 +1,4 @@
+const mango = require('../models/mango');
 var Mango = require('../models/mango');
 // List of all mangos
 exports.mango_list = async function(req, res) {
@@ -10,8 +11,15 @@ exports.mango_list = async function(req, res) {
     }
     };
 // for a specific mango.
-exports.mango_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: mango detail: ' + req.params.id);
+exports.mango_detail = async function(req, res) {
+    console.log("detail"  + req.params.id)
+    try {
+        result = await Mango.findById( req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
 };
 // Handle Costume create on POST.
 exports.mango_create_post = async function(req, res) {
@@ -37,8 +45,24 @@ exports.mango_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: mango delete DELETE ' + req.params.id);
 };
 // Handle mango update form on PUT.
-exports.mango_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: mango update PUT' + req.params.id);
+exports.mango_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body 
+    ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Mango.findById( req.params.id)
+        if(req.body.Mangoname) toUpdate.Mangoname = req.body.Mangoname;
+        if(req.body.type) toUpdate.type = req.body.type;
+        if(req.body.price) toUpdate.price = req.body.price;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
+
+
+
 };
 // VIEWS
 // Handle a show all view
