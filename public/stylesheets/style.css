@@ -10,3 +10,32 @@ a {
   background-color: aquamarine;
   width: 120px;
 }
+
+#myTitle{
+  color: grey;
+  font-weight: 777;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  text-decoration: dotted;
+}
+
+.mangoItems{
+  margin-right: 2px;
+  padding: 10px;
+  justify-content:center;
+  font-weight: bold;
+  border-right: 2px solid rgb(255, 0, 221);
+  background-color: azure;
+  border-radius: 3px;
+}
+.variety{
+    border-top: 2px solid rgb(236, 71, 195);
+    width: 45%;
+}
+.varcha{
+    border-bottom: 2px solid rgb(236, 71, 195);
+    width: 45%;
+}
+.mangoItems:hover{
+  background-color: rgb(236, 71, 195);
+  color: black;
+}
