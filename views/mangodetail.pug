@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+
+  - let Mangoid = toShow._id
+  - let Mangoname = toShow.Mangoname
+  - let Mango_type = toShow.type
+  - let price = toShow.price 
+  div
+    div.row
+      div(class='costumeAttr mr-3') Mango ID is:
+      div #{Mangoid}
+    div.row
+      div(class='costumeAttr mr-3') Mango name is:
+      div #{Mangoname}
+    div.row
+      div(class='costumeAttr mr-3') Mango type is:
+      div #{Mango_type}
+    div.row
+      div(class='costumeAttr mr-3') Mango Price  is:
+      div #{price}
