@@ -5,12 +5,16 @@ block content
   - let mangoes= results
   div(class="container-fluid mt-3")
   div(class="row")
-      each mango,index in mangoes
-        div(class="col-sm-4 m-1 p-3" style=("font-weight:bolder")  onclick=`buy(${index})`) #{mango.Mangoname} - #{mango.type} - #{mango.price} 
+    each mango,index in mangoes
+       - let destination = `dispatch(\"/mango/update?id=${mango._id}\")`
+          div(class="col-sm-4 m-1 p-3" style=("font-weight:bolder")) #{mango.Mangoname} - #{mango.type} - #{mango.price} 
+            button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
-     
-         function buy(itemNo)
-        {
-        alert(`You purchased Item ${itemNo+1}`)
-        }
+      function dispatch(path){
+      window.location.href=path
+      }
+      function buy(itemNo)
+      {
+      alert(`You purchased Item ${itemNo+1}`)
+      }
   

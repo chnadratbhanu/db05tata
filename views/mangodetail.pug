@@ -2,21 +2,24 @@ extends layout
 
 block content
   h1= title
+  if (toShow == null)
+    h2 no instance to show details.
+  else   
 
-  - let Mangoid = toShow._id
-  - let Mangoname = toShow.Mangoname
-  - let Mango_type = toShow.type
-  - let price = toShow.price 
-  div
-    div.row
-      div(class='costumeAttr mr-3') Mango ID is:
-      div(class='mangoItems variety') #{Mangoid}
-    div.row
-      div(class='costumeAttr mr-3') Mango name is:
-      div(class='mangoItems') #{Mangoname}
-    div.row
-      div(class='costumeAttr mr-3') Mango type is:
-      div(class='mangoItems') #{Mango_type}
-    div.row
-      div(class='costumeAttr mr-3') Mango Price  is:
-      div(class='mangoItems varcha') #{price}
+    - let Mangoid = toShow._id
+    - let Mangoname = toShow.Mangoname
+    - let Mango_type = toShow.type
+    - let price = toShow.price 
+    div
+      div.row
+        div(class='costumeAttr mr-3') Mango ID is:
+        div(class='mangoItems variety') #{Mangoid}
+      div.row
+        div(class='costumeAttr mr-3') Mango name is:
+        div(class='mangoItems') #{Mangoname}
+      div.row
+        div(class='costumeAttr mr-3') Mango type is:
+        div(class='mangoItems') #{Mango_type}
+      div.row
+        div(class='costumeAttr mr-3') Mango Price  is:
+        div(class='mangoItems varcha') #{price}

@@ -2,41 +2,44 @@ extends layout
 
 block content
   h1= title
+  if (toShow == null)
+    h2 no instance found for updating 
+  else 
 
-  - let mangoid = toShow._id
-  - let mangoName = toShow.Mangoname
-  - let mangoType = toShow.type
-  - let price  = toShow.price
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{mangoid}
-  - let actionid = "/resource/resource/mangoes/" + mangoid
-  form(id='mangoForm', action= actionid, method="PUT")
-    div.form-group
-        label.costumeAttr(for='Mangoname') Mango name
-        input#Mangoname(type='text', name='Mangoname', value= mangoName )
-    div.form-group
-        label.costumeAttr(for='type') mango type
-        input#mangoType(type='text', name='type', value= mangoType )
-    div.form-group
-        label.costumeAttr(for='price') price 
-        input#price(type='number', name='price', value= price )
-    input(type="submit")
+    - let mangoid = toShow._id
+    - let mangoName = toShow.Mangoname
+    - let mangoType = toShow.type
+    - let price  = toShow.price
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{mangoid}
+    - let actionid = "/resource/resource/mangoes/" + mangoid
+    form(id='mangoForm', action= actionid, method="PUT")
+      div.form-group
+          label.costumeAttr(for='Mangoname') Mango name
+          input#Mangoname(type='text', name='Mangoname', value= mangoName )
+      div.form-group
+          label.costumeAttr(for='type') mango type
+          input#mangoType(type='text', name='type', value= mangoType )
+      div.form-group
+          label.costumeAttr(for='price') price 
+          input#price(type='number', name='price', value= price )
+      input(type="submit")
 
-  script.
-    document.forms['mangoForm'].addEventListener('submit', (event) => {
-      event.preventDefault();
-      // TODO do something here to show user that form is being submitted
-      fetch(event.target.action, {
-        method: 'PUT',
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-      }).then((resp) => {
-        return resp.json(); // or resp.text() or whatever the server sends
-      }).then((body) => {
-        alert("Update succeded")
-        // TODO handle body
-      }).catch((error) => {
-        // TODO handle error
-        alert("Update failed " + error )
+    script.
+      document.forms['mangoForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error )
+        });
       });
-    });
