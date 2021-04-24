@@ -89,17 +89,17 @@ async function recreateDB(){
   // Delete everything
   console.log("nfdjgnjdf")
   await Mango.deleteMany();
-  let instance1 = new Mango({Mangoname:"Amarapali",type:"green",price:70});
+  let instance1 = new Mango({Mangoname:"Amarapali",type:"green",price:10});
   instance1.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("First object saved")
   });
-  let instance2 = new Mango({Mangoname:"Alphonso",type:"yellow",price:90});
+  let instance2 = new Mango({Mangoname:"Alphonso",type:"yellow",price:20});
   instance2.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("2nd object saved")
   });
-  let instance3 = new Mango({Mangoname:"keitt",type:"light green",price:60});
+  let instance3 = new Mango({Mangoname:"keitt",type:"light green",price:5});
   instance3.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("3rd object saved")

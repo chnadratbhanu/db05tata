@@ -1,14 +1,21 @@
 extends layout
 
 block content
+  div(style=("font-weight:bolder")) Mango create 
+    - location = `dispatch(\"/mango/create")`
+    button.btn( class="btn-primary ml-1", onclick= location) Create
   h1= title
   - let mangoes= results
   div(class="container-fluid mt-3")
-  div(class="row")
+  div(class="row m-3")
     each mango,index in mangoes
        - let destination = `dispatch(\"/mango/update?id=${mango._id}\")`
-          div(class="col-sm-4 m-1 p-3" style=("font-weight:bolder")) #{mango.Mangoname} - #{mango.type} - #{mango.price} 
-            button.btn( class="btn-primary ml-1", onclick= destination) Update
+       - let destinationDelete = `dispatch(\"/mango/delete?id=${mango._id}\")`
+       - let destinationGet = `dispatch(\"/mango/detail?id=${mango._id}\")`              
+          div(class="col-sm-5" style=("font-weight:bolder; background-color:gray; margin:5px")) #{mango.Mangoname} - #{mango.type} - #{mango.price} 
+            button.btn( class="btn-primary m2-3",style="margin:2px", onclick= destination) Update
+            button.btn( class="btn-primary m2-3",style="margin:2px", onclick= destinationDelete) Delete
+            button.btn( class="btn-primary m2-3",style="margin:2px", onclick= destinationGet) Details            
   script.
       function dispatch(path){
       window.location.href=path
